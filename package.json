@@ -1,0 +1,23 @@
+{
+  "name": "node-js-google-sheets",
+  "version": "0.3.0",
+  "description": "A sample Node.js app to read and write Google Sheets",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+	"googleapis": "^29.0.0",
+	"express": "^4.16.3"
+  },
+  "devDependencies": {
+
+  },
+  
+  "license": "MIT"
+}
