@@ -16,6 +16,7 @@ function transformData(rows){
 	for(var i=0; i <rows.length; i++){
 		//Changing the content of first column of each row here	
 		rows[i][0] = i;
+		rows[i][2] = rows[i][2] + "1";
 	}
 	
 	// Return modified rows
