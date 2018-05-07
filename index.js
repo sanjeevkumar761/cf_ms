@@ -232,6 +232,6 @@ function listMajors(auth) {
       auth: auth
     }, (err, response) => {
       if (err) return console.error(err)
-    })
+    }) 
 
 }
