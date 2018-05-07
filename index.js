@@ -10,8 +10,17 @@ const TOKEN_PATH = 'credentials.json';
 var express = require('express')
 var app = express()
 
-
-
+//Transform the content of cash flow data rows and columns here
+function transformData(rows){
+	//Iterating over the rows here
+	for(var i=0; i <rows.length; i++){
+		//Changing the content of first column of each row here	
+		rows[i][0] = i;
+	}
+	
+	// Return modified rows
+	return rows;
+}
 
 
 
@@ -166,7 +175,8 @@ function coreFn2(auth){
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
-
+				
+				rows = transformData(rows);
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
