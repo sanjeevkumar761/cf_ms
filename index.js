@@ -168,15 +168,16 @@ function coreFn2(auth){
 			range: 'Sheet1!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
-			const rows = data.values;
+			var rows = data.values;
 			if (rows.length) {
+			  rows = transformData(rows);	
 			  console.log('Name, Major:');
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
 				
-				rows = transformData(rows);
+				
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
