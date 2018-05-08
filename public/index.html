@@ -20,20 +20,17 @@
     
     <script>
 		$(document).ready(function(){
-
-	function jsonCallback(json) {
-				   alert(json);	
-				   console.log(json);
-				}	
-				
+			//Making AJAX call to retrieve cash flow data from REST API	
 			$.ajax({
 			   type: 'GET',
 			    url: "https://scelero.serveo.net/read",
 			    success: function(json) {
-			    	console.log("came in success");
-
-			    	console.log(json.result.length);
+			    	console.log("Got the data");
+			    	console.log(json.result.length); // Prints total no. of records on browser console
+			    	
+			    	//Iterate through the data records
 			    	for(var i=0; i<json.result.length;i++){
+			    		//Build table header row
 			    		if(i == 0){
 							$("#becf_table").append(
 								"<thead>" + 
@@ -52,13 +49,13 @@
 									"</tr></thead>"
 							)			    			
 			    		}else {
+			    			//Build table data rows
 			    			var tableBody = "";
 			    			tableBody = tableBody + "<tbody>";
 			    					tableBody = tableBody + "<tr>";
+			    					//Printing first 10 columns only, of each row
 					    			for(var j=0; j <=10; j++ ){
-					    			
 					    					tableBody = tableBody + "<td>" + json.result[i][j] + "</td>";
-					    				
 					    			}
 			    					tableBody = tableBody + "</tr>";
 			    			tableBody = tableBody + "</tbody>";
@@ -66,12 +63,9 @@
 			    		}
 			    	}
 
-			       //console.log(json);
-				console.log(json.result.length);
-
 			    },
 			    error: function(e) {
-			    	alert("error");
+			    	//Handle the error here
 			       console.log(e);
 			    }
 			});
