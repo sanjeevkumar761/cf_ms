@@ -140,7 +140,7 @@ function coreFn2(auth){
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
 			  
-			  res.json(rows);
+			  res.json({"result": rows});
 			} else {
 			  
 			}
