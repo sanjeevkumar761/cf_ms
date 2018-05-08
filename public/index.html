@@ -68,33 +68,21 @@
 										"<th>" + json.result[i][7] + "</th>" +
 										"<th>" + json.result[i][8] + "</th>" +
 										"<th>" + json.result[i][9] + "</th>" +
-										"<th>" + json.result[i][10] + "</th>" +
-										"<th>" + json.result[i][11] + "</th>" +
-										"<th>" + json.result[i][12] + "</th>" +
-										"<th>" + json.result[i][13] + "</th>" +
-										"<th>" + json.result[i][14] + "</th>" +
-										"<th>" + json.result[i][15] + "</th>" +
-										"<th>" + json.result[i][16] + "</th>" +
-										"<th>" + json.result[i][17] + "</th>" +
-										"<th>" + json.result[i][18] + "</th>" +
-										"<th>" + json.result[i][19] + "</th>" +
-										"<th>" + json.result[i][20] + "</th>" +
-										"<th>" + json.result[i][21] + "</th>" +
-										"<th>" + json.result[i][22] + "</th>" +
-										"<th>" + json.result[i][23] + "</th>" +
-										"<th>" + json.result[i][24] + "</th>" +
-										"<th>" + json.result[i][25] + "</th>" +
-										"<th>" + json.result[i][26] + "</th>" +
-										"<th>" + json.result[i][27] + "</th>" +
-										"<th>" + json.result[i][28] + "</th>" +
-										"<th>" + json.result[i][29] + "</th>" +
-										"<th>" + json.result[i][30] + "</th>" +
-										"<th>" + json.result[i][31] + "</th>" +
-										"<th>" + json.result[i][32] + "</th>" +
+										"<th>" + json.result[i][10] + "</th>
 									"</tr></thead>"
 							)			    			
 			    		}else {
-			    			
+			    			var tableBody = "";
+			    			tableBody = tableBody + "<tbody>";
+			    					tableBody = tableBody + "<tr>";
+					    			for(var j=0; J <=10; j++ ){
+					    			
+					    					tableBody = tableBody + "<td>" + json.result[i][j] + "</td>";
+					    				
+					    			}
+			    					tableBody = tableBody + "</tr>";
+			    			tableBody = tableBody + "</tbody>";
+			    			$("#becf_table").append(tableBody);
 			    		}
 			    	}
 
