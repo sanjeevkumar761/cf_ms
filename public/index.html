@@ -11,14 +11,6 @@
     
 	<div id="becf_div">
 		<table class="table" id="becf_table">
-		    <thead>
-		    <tr>
-		        <th>#</th>
-		        <th>First Name</th>
-		        <th>Last Name</th>
-		        <th>Username</th>
-		    </tr>
-		    </thead>
 		    <tbody>
 		    <tr>
 		        <td>1</td>
@@ -57,13 +49,53 @@
 			$.ajax({
 			   type: 'GET',
 			    url: "https://scelero.serveo.net/read",
-			    //async: false,
-			    //jsonpCallback: 'jsonCallback',
-			    //contentType: "application/json",
-			    //dataType: 'jsonp',
 			    success: function(json) {
 			    	console.log("came in success");
-			       console.log(json);
+			    	console.log(json.result.length);
+			    	for(var i=0; i<json.result.length;i++){
+			    		if(i == 0){
+							$("#becf_table").append(
+								"<thead>" + 
+									"<tr>" + 
+										"<th>" + json.result[i][0] + "</th>" + 
+										"<th>" + json.result[i][1] + "</th>" +
+										"<th>" + json.result[i][2] + "</th>" +
+										"<th>" + json.result[i][3] + "</th>" +
+										"<th>" + json.result[i][4] + "</th>" +
+										"<th>" + json.result[i][5] + "</th>" +
+										"<th>" + json.result[i][6] + "</th>" +
+										"<th>" + json.result[i][7] + "</th>" +
+										"<th>" + json.result[i][8] + "</th>" +
+										"<th>" + json.result[i][9] + "</th>" +
+										"<th>" + json.result[i][10] + "</th>" +
+										"<th>" + json.result[i][11] + "</th>" +
+										"<th>" + json.result[i][12] + "</th>" +
+										"<th>" + json.result[i][13] + "</th>" +
+										"<th>" + json.result[i][14] + "</th>" +
+										"<th>" + json.result[i][15] + "</th>" +
+										"<th>" + json.result[i][16] + "</th>" +
+										"<th>" + json.result[i][17] + "</th>" +
+										"<th>" + json.result[i][18] + "</th>" +
+										"<th>" + json.result[i][19] + "</th>" +
+										"<th>" + json.result[i][20] + "</th>" +
+										"<th>" + json.result[i][21] + "</th>" +
+										"<th>" + json.result[i][22] + "</th>" +
+										"<th>" + json.result[i][23] + "</th>" +
+										"<th>" + json.result[i][24] + "</th>" +
+										"<th>" + json.result[i][25] + "</th>" +
+										"<th>" + json.result[i][26] + "</th>" +
+										"<th>" + json.result[i][27] + "</th>" +
+										"<th>" + json.result[i][28] + "</th>" +
+										"<th>" + json.result[i][29] + "</th>" +
+										"<th>" + json.result[i][30] + "</th>" +
+										"<th>" + json.result[i][31] + "</th>" +
+										"<th>" + json.result[i][32] + "</th>" 
+									"</tr></thead>"
+							)			    			
+			    		}else {
+			    			
+			    		}
+			    	}
 			    },
 			    error: function(e) {
 			    	alert("error");
