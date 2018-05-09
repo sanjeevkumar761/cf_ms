@@ -78,7 +78,7 @@ function coreFn(auth){
 	  const sheets = google.sheets({version: 'v4', auth});
 	  sheets.spreadsheets.values.get({
 		//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-		spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+		spreadsheetId: '160K6KC8hUx6ut1XIXFMbzngyQ9Yd47-E_WDoN_Gz_yk',
 		range: 'Sheet1!A2:E',
 	  }, (err, {data}) => {
 		if (err) return console.log('The API returned an error: ' + err);
@@ -112,7 +112,7 @@ function coreFn2(auth){
 		  
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			spreadsheetId: '160K6KC8hUx6ut1XIXFMbzngyQ9Yd47-E_WDoN_Gz_yk',
 			range: 'Sheet1!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
@@ -155,7 +155,7 @@ function coreFn2(auth){
 
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			spreadsheetId: '160K6KC8hUx6ut1XIXFMbzngyQ9Yd47-E_WDoN_Gz_yk',
 			range: 'Sheet1!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
@@ -201,7 +201,7 @@ function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     //spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-	spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+	spreadsheetId: '160K6KC8hUx6ut1XIXFMbzngyQ9Yd47-E_WDoN_Gz_yk',
     range: 'Sheet1!A2:E',
   }, (err, {data}) => {
     if (err) return console.log('The API returned an error: ' + err);
@@ -220,7 +220,7 @@ function listMajors(auth) {
 
   
     sheets.spreadsheets.values.append({
-		spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+		spreadsheetId: '160K6KC8hUx6ut1XIXFMbzngyQ9Yd47-E_WDoN_Gz_yk',
 		range: 'Sheet1!A2:E',
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
