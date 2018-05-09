@@ -25,6 +25,7 @@ function transformData(rows){
 }
 
 function cf_aggregate(rows){
+	res.json("Function called...");
 	var res = [];
 	//var coverage;// = row[1][4];
 	res.push( [ 1, row[1][4], "1010", 0.00, row[1][16] ] );
@@ -265,20 +266,23 @@ function coreFn2(auth){
 	});		
 	
 	app.get('/cf-sum', function (req, res) {
-		console.log('Started...');
+		//console.log('Started...');
+		res.json("Started...");
 		  sheets.spreadsheets.values.get({
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			range: 'BECF_V4!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			var rows = data.values;
-			console.log('Read...');
+			//console.log('Read...');
+			res.json("Read...");
 			if (rows.length) {
 			  var uv = cf_aggregate(rows);	
 			  /*.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })*/
-				console.log('Summed up...');
+				//console.log('Summed up...');
+				res.json("Summed up...");
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
