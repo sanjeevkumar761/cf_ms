@@ -205,7 +205,7 @@ function coreFn2(auth){
 		//res.send(auth);
 		  sheets.spreadsheets.values.get({
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			range: 'Kai_KLauck!A:AQ',
+			range: 'BECF_Heroes_Input!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			const rows = data.values;
