@@ -1,3 +1,20 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @sanjeevkumar761
+Sign out
+1
+0 0 sanjeevkumar761/cf_ms
+ Code  Issues 0  Pull requests 1  Projects 0  Wiki  Insights  Settings
+cf_ms/index.js
+136523c  2 days ago
+ S0019146386 Updated file
+     
+250 lines (210 sloc)  7.15 KB
 const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
@@ -9,9 +26,6 @@ const TOKEN_PATH = 'credentials.json';
 
 var express = require('express')
 var app = express()
-
-
-
 
 //Transform the content of cash flow data rows and columns here
 function transformData(rows){
@@ -25,6 +39,8 @@ function transformData(rows){
 	// Return modified rows
 	return rows;
 }
+
+
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
@@ -90,7 +106,7 @@ function coreFn(auth){
 	  sheets.spreadsheets.values.get({
 		//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 		spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-		range: 'Sheet1!A2:E',
+		range: 'yauhen!A2:E',
 	  }, (err, {data}) => {
 		if (err) return console.log('The API returned an error: ' + err);
 		const rows = data.values;
@@ -145,13 +161,13 @@ function coreFn2(auth){
 	app.get('/upsert', function (req, res) {
 		sheets.spreadsheets.values.append({
 			spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
-			range: 'yauhen!A2:E',
+			range: 'Sheet1!A2:E',
 		  valueInputOption: 'RAW',
 		  insertDataOption: 'INSERT_ROWS',
 		  resource: {
 			values: [
-			[new Date(), "User1", "4.Senior", "CA", "English", "Drama Club"],
-			[new Date(), "User1", "5.Senior", "CA", "English", "Drama Club"]
+			  [new Date(), "User1", "4.Senior", "CA", "English", "Drama Club"],
+			  [new Date(), "User1", "5.Senior", "CA", "English", "Drama Club"]
 			],
 		  },
 		  auth: auth
@@ -170,14 +186,16 @@ function coreFn2(auth){
 			range: 'Sheet1!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
-			const rows = data.values;
+			var rows = data.values;
 			if (rows.length) {
+			  rows = transformData(rows);	
 			  console.log('Name, Major:');
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
-
+				
+				
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
@@ -246,3 +264,16 @@ function listMajors(auth) {
     }) 
 
 }
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
+Press h to open a hovercard with more details.
