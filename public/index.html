@@ -1,56 +1,76 @@
-<html>
-	<head>
-	  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
-	</head>
-	<body>
-		<table id="example" class="table table-striped table-bordered" style="width:100%">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Age</th>
-						<th>Start date</th>
-						<th>Salary</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Tiger Nixon</td>
-						<td>System Architect</td>
-						<td>Edinburgh</td>
-						<td>61</td>
-						<td>2011/04/25</td>
-						<td>$320,800</td>
-					</tr>
-					<tr>
-						<td>Garrett Winters</td>
-						<td>Accountant</td>
-						<td>Tokyo</td>
-						<td>63</td>
-						<td>2011/07/25</td>
-						<td>$170,750</td>
-					</tr>
-					<tr>
-						<td>Donna Snider</td>
-						<td>Customer Support</td>
-						<td>New York</td>
-						<td>27</td>
-						<td>2011/01/25</td>
-						<td>$112,000</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Age</th>
-						<th>Start date</th>
-						<th>Salary</th>
-					</tr>
-				</tfoot>
-			</table>
-		</body>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+</head>
+<body>
+<h1 class="text-center">Cash Flows</h1>
+<!--<h3 class="text-center">It Works!</h3>-->
+<!--<div data-role="cube"></div>-->
+    <div id="becf_div">
+        <table class="table" id="becf_table">
+        </table>        
+    </div>
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+<script>
+        $(document).ready(function(){
+        
+        data = JSON.stringify(
+        
+		 {
+			ACCOUNT : "CASH",
+			BUSINESSTRANSACTIONID : "123",
+			EXTERNALCONTRACT : "ACOUNT02",
+			FX_RATE : null,
+			POSTINGDATE : "/Date(1525651200000)/",
+			SOURCESYSTEM : "SRS",
+			TRANSACTIONAMOUNT : "100",
+			TRANSACTION_CURR_ISO : "CHF",
+			TRANSLATEDAMOUNT : "",
+			TRANSLATED_CURR_ISO : ""
+			}
+        	
+        );
+        
+        $.ajax({
+			
+			  type: "POST",
+			
+			  url: "https://hana.ser/SwissRE/swissredbservice/TRANS_FX.xsodata/TRANS_FX",
+			
+			  data: data,
+			
+			  cache: false,
+			
+			  dataType: "json",
+			
+			  contentType: "application/json",
+  
+              'auth': {
+                                             'user': 'SRADMIN',
+                                             'pass': 'London123',
+                                             'sendImmediately': true
+                                },                           
+
+			  error : function(msg, textStatus) {
+			
+			    console.log(textStatus);
+			
+			  },
+			
+			  success : function(data) {
+			
+			    console.log(data);
+			
+			  }
+		
+		});
+     
+        });
+</script>
+</body>
 </html>
