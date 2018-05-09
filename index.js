@@ -146,7 +146,7 @@ function coreFn2(auth){
 		  auth: auth
 		}, (err, response) => {
 		  if (err) return console.error(err)
-		  res.json({"message": "Done"})	  
+		  res.json({"message": "Done. Specially for Justus."})	  
 		})			
 	});
 	
