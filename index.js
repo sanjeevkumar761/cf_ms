@@ -221,22 +221,21 @@ function coreFn2(auth){
 
 			  for (var i = 0; i < rows.length; i++){
     			var obj = arr[i];
-			    rows.map((row) => {
 			    	var arrayRow = [];
-        			var cfCatDesc = row[0];
-        			var payCat = row[1];
-        			var payCatDesc = row[2];
-        			var changeDriver =  row[3];
-        			var changeDriverCfDesc =  row[4];
+        			var cfCatDesc = row[i][0];
+        			var payCat = row[i][1];
+        			var payCatDesc = row[i][2];
+        			var changeDriver =  row[i][3];
+        			var changeDriverCfDesc =  row[i][4];
         			if (i==0){
-        			  var dateDue =  row[5];
-        			  var dateSett =  row[6];
+        			  var dateDue =  row[i][5];
+        			  var dateSett =  row[i][6];
         			} else {
-        			  var dateDue =  new Date(row[5]);
-        			  var dateSett =  new Date(row[6]);
+        			  var dateDue =  new Date(row[i][5]);
+        			  var dateSett =  new Date(row[i][6]);
         			}
-        			var CfAmntPos =  row[7];
-        			var PositionCurr =  row[8];
+        			var CfAmntPos =  row[i][7];
+        			var PositionCurr =  row[i][9];
         			
         			arrayRow.push(cfCatDesc);
         			arrayRow.push(payCat);
@@ -276,7 +275,7 @@ function coreFn2(auth){
 					  arrayRow.push(changeDriverCfDesc.substring(0, 3).toUpperCase());
 					}
         			arrString.push(arrayRow);
-  			    })
+  			    
 			  }
         			res.json(arrString);
 			  
