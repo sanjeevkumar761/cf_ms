@@ -202,9 +202,6 @@ function coreFn2(auth){
 	});	
 
 	app.get('/calc', function (req, res) {
-
-	const sheets = google.sheets({version: 'v4', auth});
-	app.get('/read', function (req, res) {
 		//res.send(auth);
 		  sheets.spreadsheets.values.get({
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
