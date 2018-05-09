@@ -168,6 +168,20 @@ function coreFn2(auth){
 			  })
 
 				//Write now
+				/*var request = {
+					  resorce: {
+					  	properties: {title:'ASTU'}
+					  	//sheets: [sheet1, sheet2]
+					  },
+					  auth: authClient,
+					};
+				sheets.spreadsheets.create(request, function(err, response) {
+				  if (err) {
+				  	console.error(err);
+				  	return;
+				  }
+				  console.log(JSON.stringfy(response, null, 2));
+				 } );*/
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
 					range: 'Sheet1!A2:E',
