@@ -10,8 +10,18 @@ const TOKEN_PATH = 'credentials.json';
 var express = require('express')
 var app = express()
 
-
-
+//Transform the content of cash flow data rows and columns here
+function transformData(rows){
+	//Iterating over the rows here
+	for(var i=0; i <rows.length; i++){
+		//Changing the content of first column of each row here	
+		rows[i][0] = i;
+		rows[i][2] = rows[i][2] + "1";
+	}
+	
+	// Return modified rows
+	return rows;
+}
 
 
 
@@ -121,7 +131,7 @@ function coreFn2(auth){
 			  console.log('Name, Major:');
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
-				console.log(`${row[0]}, ${row[6]}`);
+				console.log(`${row[0]}, ${row[4]}`);
 			  })
 			  
 			  res.json(rows);
@@ -159,14 +169,16 @@ function coreFn2(auth){
 			range: 'Sheet1!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
-			const rows = data.values;
+			var rows = data.values;
 			if (rows.length) {
+			  rows = transformData(rows);	
 			  console.log('Name, Major:');
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
-
+				
+				
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
