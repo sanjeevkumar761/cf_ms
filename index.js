@@ -220,8 +220,7 @@ function coreFn2(auth){
 			  var arrString = [];
 
 			  for (var i = 0; i < rows.length; i++){
-    			var obj = arr[i];
-			    	var arrayRow = [];
+    				var arrayRow = [];
         			var cfCatDesc = row[i][0];
         			var payCat = row[i][1];
         			var payCatDesc = row[i][2];
