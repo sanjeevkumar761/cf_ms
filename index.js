@@ -41,6 +41,64 @@ function transformData(rows){
 }
 
 
+	app.get('/READ_BECF_INPUT', function (req, res) {
+		console.log("Entered in readfromhana");
+		var request = require('request');
+		var options = {
+		  uri: 'https://preemeahana3aa2814455.hana.ondemand.com/sap/hana/ide/editor/plugin/testtools/odataexplorer/index.html?appName=/SwissRE/swissredbservice/BECF_RECON_INPUT.xsodata',
+		  headers: [
+			{
+			  name: 'content-type',
+			  value: 'application/json'
+			}
+		  ],		  
+		  method: 'POST',
+		  'auth': {
+			'user': 'SRADMIN',
+			'pass': 'London123',
+			'sendImmediately': true
+		  },		  
+		  json: {
+		  	"KEY":130,
+		  
+		  }
+		};
+	}
+
+
+app.post('/writetohana', function (req, res) {
+		console.log("Entered in writetohana");
+		var request = require('request');
+		var options = {
+		  uri: 'https://preemeahana3aa2814455.hana.ondemand.com/sap/hana/ide/editor/plugin/testtools/odataexplorer/index.html?appName=/SwissRE/swissredbservice/BECF_RECON_RESULTS.xsodata',
+		  headers: [
+			{
+			  name: 'content-type',
+			  value: 'application/json'
+			}
+		  ],		  
+		  method: 'POST',
+		  'auth': {
+			'user': 'SRADMIN',
+			'pass': 'London123',
+			'sendImmediately': true
+		  },		  
+		  json: {
+		  	"KEY":130,
+		  	
+		  }
+		};
+
+		request(options, function (error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			res.json({"message": "done"});
+		  }else {
+			res.json({"responseBody": body, "message": error, "response": response.statusCode});
+		  }
+		});	  
+	
+});
+
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
