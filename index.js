@@ -223,15 +223,15 @@ function coreFn2(auth){
     			var obj = arr[i];
 			    rows.map((row) => {
 			    	var arrayRow = [];
-        			var cfCatDesc = ${row[0]};
-        			var payCat = ${row[1]};
-        			var payCatDesc = ${row[2]};
-        			var changeDriver =  ${row[3]};
-        			var changeDriverCfDesc =  ${row[4]};
-        			var dateDue =  new Date(${row[5]});
-        			var dateSett =  new Date(${row[6]});
-        			var CfAmntPos =  ${row[7]};
-        			var PositionCurr =  ${row[8]};
+        			var cfCatDesc = row[0];
+        			var payCat = row[1];
+        			var payCatDesc = row[2];
+        			var changeDriver =  row[3];
+        			var changeDriverCfDesc =  row[4];
+        			var dateDue =  new Date(row[5]);
+        			var dateSett =  new Date(row[6]);
+        			var CfAmntPos =  row[7];
+        			var PositionCurr =  row[8];
         			
         			arrayRow.push(cfCatDesc);
         			arrayRow.push(payCat);
