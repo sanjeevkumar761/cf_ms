@@ -11,10 +11,6 @@ var express = require('express')
 var app = express()
 
 
-
-
-
-
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
@@ -40,6 +36,32 @@ function authorize(credentials, callback) {
   });
 }
 
+function transformData (auth){
+	console.log("Call came here to transfor the data");	
+	const sheets = google.sheets({version: 'v4', auth});
+	app.get('/read', function (req, res) {
+		//res.send(auth);
+		  
+		  sheets.spreadsheets.values.get({
+			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			range: 'RolfSheet!A:D',
+		  }, (err, {data}) => {
+			if (err) return console.log('The API returned an error: ' + err);
+			const rows = data.values;
+			if (rows.length) {
+			  console.log('Name, Major:');
+			  // Print columns A and E, which correspond to indices 0 and 4.
+			  rows.map((row) => {
+				console.log(`${row[0]}, ${row[4]}`);
+			  })
+			  
+			  
+			} else {
+			  
+			}
+		  });		
+	});
 /**
  * Get and store new token after prompting for user authorization, and then
  * execute the given callback with the authorized OAuth2 client.
