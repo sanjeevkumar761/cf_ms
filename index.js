@@ -243,7 +243,7 @@ function coreFn2(auth){
         			arrayRow.push(CfAmntPos);
         			arrayRow.push(PostionCurr);
         			
-        			if (i=0){
+        			if (i==0){
         			  arrayRow.push("D_C_INDICATOR");	
         			  arrayRow.push("Due_Overdue");
         			  arrayRow.pudh("Settle_PastSettle");
