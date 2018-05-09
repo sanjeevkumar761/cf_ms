@@ -79,7 +79,7 @@ function coreFn(auth){
 	  sheets.spreadsheets.values.get({
 		//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 		spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-		range: 'Sheet1!A2:E',
+		range: 'ElbinSheet!A2:E',
 	  }, (err, {data}) => {
 		if (err) return console.log('The API returned an error: ' + err);
 		const rows = data.values;
@@ -113,7 +113,7 @@ function coreFn2(auth){
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			range: 'Sheet1!A:AQ',
+			range: 'ElbinSheet!A:AP',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			const rows = data.values;
@@ -156,7 +156,7 @@ function coreFn2(auth){
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			range: 'Sheet1!A:AQ',
+			range: 'ElbinSheet!A:AP',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			const rows = data.values;
@@ -170,7 +170,7 @@ function coreFn2(auth){
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
-					range: 'Sheet1!A2:E',
+					range: 'ElbinSheet!A2:E',
 				  valueInputOption: 'RAW',
 				  insertDataOption: 'INSERT_ROWS',
 				  resource: {
@@ -202,7 +202,7 @@ function listMajors(auth) {
   sheets.spreadsheets.values.get({
     //spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 	spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-    range: 'Sheet1!A2:E',
+    range: 'ElbinSheet!A2:E',
   }, (err, {data}) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = data.values;
