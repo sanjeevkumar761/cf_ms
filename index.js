@@ -228,8 +228,13 @@ function coreFn2(auth){
         			var payCatDesc = row[2];
         			var changeDriver =  row[3];
         			var changeDriverCfDesc =  row[4];
-        			var dateDue =  new Date(row[5]);
-        			var dateSett =  new Date(row[6]);
+        			if (i==0){
+        			  var dateDue =  row[5];
+        			  var dateSett =  row[6];
+        			} else {
+        			  var dateDue =  new Date(row[5]);
+        			  var dateSett =  new Date(row[6]);
+        			}
         			var CfAmntPos =  row[7];
         			var PositionCurr =  row[8];
         			
@@ -241,7 +246,7 @@ function coreFn2(auth){
         			arrayRow.push(dateDue);
         			arrayRow.push(dateSett);
         			arrayRow.push(CfAmntPos);
-        			arrayRow.push(PostionCurr);
+        			arrayRow.push(PositionCurr);
         			
         			if (i==0){
         			  arrayRow.push("D_C_INDICATOR");	
