@@ -39,10 +39,7 @@ function authorize(credentials, callback) {
 function transformData (auth){
 	console.log("Call came here to transfor the data");	
 	const sheets = google.sheets({version: 'v4', auth});
-	app.get('/read', function (req, res) {
-		//res.send(auth);
-		  
-		  sheets.spreadsheets.values.get({
+    sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			range: 'RolfSheet!A:D',
@@ -55,13 +52,13 @@ function transformData (auth){
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })
-			  
+			rows.map(row)
 			  
 			} else {
 			  
 			}
 		  });		
-	});
+	};
 /**
  * Get and store new token after prompting for user authorization, and then
  * execute the given callback with the authorized OAuth2 client.
