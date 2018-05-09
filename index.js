@@ -121,7 +121,7 @@ function coreFn2(auth){
 			  console.log('Name, Major:');
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
-				console.log(`${row[0]}, ${row[4]}`);
+				console.log(`${row[0]}, ${row[6]}`);
 			  })
 			  
 			  res.json(rows);
