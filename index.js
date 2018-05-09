@@ -13,7 +13,18 @@ var app = express()
 
 
 
-
+//Transform the content of cash flow data rows and columns here
+function transformData(rows){
+	//Iterating over the rows here
+	for(var i=0; i <rows.length; i++){
+		//Changing the content of first column of each row here	
+		rows[i][0] = i;
+		rows[i][2] = rows[i][2] + "1";
+	}
+	
+	// Return modified rows
+	return rows;
+}
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
