@@ -271,9 +271,9 @@ function coreFn2(auth){
 					  arrayRow.push(changeDriverCfDesc.substring(0, 3).toUpperCase());
 					}
         			arrString.push(arrayRow);
-        			res.json(arrString);
   			    })
 			  }
+        			res.json(arrString);
 			  
 			} else {
 			  
