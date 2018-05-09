@@ -200,6 +200,90 @@ function coreFn2(auth){
 	
 		
 	});	
+
+	app.get('/calc', function (req, res) {
+
+	const sheets = google.sheets({version: 'v4', auth});
+	app.get('/read', function (req, res) {
+		//res.send(auth);
+		  sheets.spreadsheets.values.get({
+			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			range: 'Kai_KLauck!A:AQ',
+		  }, (err, {data}) => {
+			if (err) return console.log('The API returned an error: ' + err);
+			const rows = data.values;
+			if (rows.length) {
+			  console.log('Name, Major:');
+			  // Print columns A and E, which correspond to indices 0 and 4.
+			  rows.map((row) => {
+				console.log(`${row[0]}, ${row[4]}`);
+			  })
+			  
+			  var todaysDate = new Date();
+			  var arrString = [];
+
+			  for (var i = 0; i < rows.length; i++){
+    			var obj = arr[i];
+			    rows.map((row) => {
+			    	var arrayRow = [];
+        			var cfCatDesc = ${row[0]};
+        			var payCat = ${row[1]};
+        			var payCatDesc = ${row[2]};
+        			var changeDriver =  ${row[3]};
+        			var changeDriverCfDesc =  ${row[4]};
+        			var dateDue =  new Date(${row[5]});
+        			var dateSett =  new Date(${row[6]});
+        			var CfAmntPos =  ${row[7]};
+        			var PositionCurr =  ${row[8]};
+        			
+        			arrayRow.push(cfCatDesc);
+        			arrayRow.push(payCat);
+        			arrayRow.push(payCatDesc);
+        			arrayRow.push(changeDriver);
+        			arrayRow.push(changeDriverCfDesc);
+        			arrayRow.push(dateDue);
+        			arrayRow.push(dateSett);
+        			arrayRow.push(CfAmntPos);
+        			arrayRow.push(PostionCurr);
+        			
+        			if (i=0){
+        			  arrayRow.push("D_C_INDICATOR");	
+        			  arrayRow.push("Due_Overdue");
+        			  arrayRow.pudh("Settle_PastSettle");
+        			  arrayRow.push("ChangeDriver")
+        			} else {
+        			
+					  if (strcmp(payCat, "1010")){
+					  	arrayRow.push("Debit");
+					  } else {
+						arrayRow.push("Credit");
+					  }      			
+					
+					  if (dateDue < todaysDate) {
+						arrayRow.push("Overdue");
+					  } else {
+						arrayRow.push("Not Yet Due");
+					  }
+
+					  if (dateSett < todaysDate) {
+						arrayRow.push("Past Settle");
+					  } else {
+						arrayRow.push("Not Yet Settled");
+					  }
+					
+					  arrayRow.push(changeDriverCfDesc.substring(0, 3).toUpperCase());
+					}
+        			arrString.push(arrayRow);
+        			res.json(arrString);
+  			    })
+			  }
+			  
+			} else {
+			  
+			}
+		  });			
+		
+	});	
 	
 	app.listen(process.env.PORT || 8080, () => console.log('Example app listening on port 8080!'))	
 }
@@ -246,4 +330,10 @@ function listMajors(auth) {
       if (err) return console.error(err)
     }) 
 
+}
+
+function strcmp(a, b) {
+    if (a.toString() < b.toString()) return -1;
+    if (a.toString() > b.toString()) return 1;
+    return 0;
 }
