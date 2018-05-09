@@ -113,12 +113,12 @@ function coreFn2(auth){
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			range: 'Sheet1!A:AQ',
+			range: 'Kai_Klauck!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			const rows = data.values;
 			if (rows.length) {
-			  console.log('Name, Major:');
+			  console.log('Name, Major:'); 
 			  // Print columns A and E, which correspond to indices 0 and 4.
 			  rows.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
