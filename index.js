@@ -265,20 +265,20 @@ function coreFn2(auth){
 	});		
 	
 	app.get('/cf-sum', function (req, res) {
-
+		console.log('Started...');
 		  sheets.spreadsheets.values.get({
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			range: 'BECF_V4!A:AQ',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			var rows = data.values;
+			console.log('Read...');
 			if (rows.length) {
 			  var uv = cf_aggregate(rows);	
 			  /*.map((row) => {
 				console.log(`${row[0]}, ${row[4]}`);
 			  })*/
-				
-				
+				console.log('Summed up...');
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
