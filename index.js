@@ -24,6 +24,29 @@ function transformData(rows){
 	return rows;
 }
 
+function cf_aggregate(rows){
+	var res = [];
+	//var coverage;// = row[1][4];
+	res.push( [ 1, row[1][4], "1010", 0.00, row[1][16] ] );
+	res.push( [ 2, row[1][4], "2000", 0.00, row[1][16] ] );
+	//Iterating over the rows here
+	for(var i=1; i <rows.length; i++){
+		/*if (coverage <> row[i][4] ) {
+		  res.push( [row[i]][4], "1010", 0.00] );
+		  res.push( [row[i]][4], "2000", 0.00] );
+		  coverage = row[i][4];
+		};*/
+		//Changing the content of first column of each row here	
+		if (row[i][2] == "1010") {
+		  res[0][3] += row[i][15];
+		} else {
+		  res[1][3] += row[i][15];
+		}
+	}
+	
+	// Return modified rows
+	return res;
+}
 
 
 // Load client secrets from a local file.
@@ -240,6 +263,43 @@ function coreFn2(auth){
 	
 		
 	});		
+	
+	app.get('/cf-sum', function (req, res) {
+
+		  sheets.spreadsheets.values.get({
+			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			range: 'BECF_V4!A:AQ',
+		  }, (err, {data}) => {
+			if (err) return console.log('The API returned an error: ' + err);
+			var rows = data.values;
+			if (rows.length) {
+			  var uv = cf_aggregate(rows);	
+			  /*.map((row) => {
+				console.log(`${row[0]}, ${row[4]}`);
+			  })*/
+				
+				
+				//Write now
+				sheets.spreadsheets.values.append({
+					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
+					range: 'CF_SUM!A2:E',
+				  valueInputOption: 'RAW',
+				  insertDataOption: 'INSERT_ROWS',
+				  resource: {
+					values: uv,
+				  },
+				  auth: auth
+				}, (err, response) => {
+				  if (err) return console.error(err)
+				  res.json({"message": "Done. CF data summed up and stored."})	  
+				})					
+			} else {
+			  
+			}
+		  });	
+	
+		
+	});			
 	
 	app.listen(process.env.PORT || 8080, () => console.log('Example app listening on port 8080!'))	
 }
