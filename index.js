@@ -42,6 +42,36 @@ app.post('/writetohana', function (req, res) {
 	
 });
 
+app.post('/writetohanafx', function (req, res) {
+		console.log("Entered in writetohana");
+		var request = require('request');
+		var options = {
+		  uri: 'https://preemeahana3aa2814455.hana.ondemand.com/SwissRE/swissredbservice/TRANS_FX.xsodata/TRANS_FX',
+		  headers: [
+			{
+			  name: 'content-type',
+			  value: 'application/json'
+			}
+		  ],		  
+		  method: 'POST',
+		  'auth': {
+			'user': 'SRADMIN',
+			'pass': 'London123',
+			'sendImmediately': true
+		  },		  
+		  json: req.body
+		};
+
+		request(options, function (error, response, body) {
+		  if (!error && response.statusCode == 200) {
+			res.json({"message": "done"});
+		  }else {
+			res.json({"responseBody": body, "message": error, "response": response.statusCode});
+		  }
+		});	  
+	
+});
+
 //Transform the content of cash flow data rows and columns here
 function transformData(rows){
 	//Iterating over the rows here
