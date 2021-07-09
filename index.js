@@ -11,10 +11,6 @@ var express = require('express')
 var app = express()
 
 
-
-
-
-
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
@@ -40,6 +36,29 @@ function authorize(credentials, callback) {
   });
 }
 
+function transformData (auth){
+	console.log("Call came here to transfor the data");	
+	const sheets = google.sheets({version: 'v4', auth});
+    sheets.spreadsheets.values.get({
+			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
+			range: 'RolfSheet!A:D',
+		  }, (err, {data}) => {
+			if (err) return console.log('The API returned an error: ' + err);
+			const rows = data.values;
+			if (rows.length) {
+			  console.log('Name, Major:');
+			  // Print columns A and E, which correspond to indices 0 and 4.
+			  rows.map((row) => {
+				console.log(`${row[0]}, ${row[4]}`);
+			  })
+			rows.map(row)
+			  
+			} else {
+			  
+			}
+		  });		
+	};
 /**
  * Get and store new token after prompting for user authorization, and then
  * execute the given callback with the authorized OAuth2 client.
@@ -113,7 +132,7 @@ function coreFn2(auth){
 		  sheets.spreadsheets.values.get({
 			//spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
 			spreadsheetId: '1rWK0TueCetHp7SSUVj1y8Y4TdCv0RIHPog7BBxOrqGM',
-			range: 'Sheet1!A:AQ',
+			range: 'RolfSheet!A:D',
 		  }, (err, {data}) => {
 			if (err) return console.log('The API returned an error: ' + err);
 			const rows = data.values;
@@ -134,7 +153,7 @@ function coreFn2(auth){
 	app.get('/upsert', function (req, res) {
 		sheets.spreadsheets.values.append({
 			spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
-			range: 'Sheet1!A2:E',
+			range: 'RolfSheetOne!A2:E',
 		  valueInputOption: 'RAW',
 		  insertDataOption: 'INSERT_ROWS',
 		  resource: {
@@ -170,7 +189,7 @@ function coreFn2(auth){
 				//Write now
 				sheets.spreadsheets.values.append({
 					spreadsheetId: '1FuLa7ZP_5e1gQoP9rqlMDf33_SiZLmAKiBwJUyjP630',
-					range: 'Sheet1!A2:E',
+					range: 'RolfSheetOne!A2:E',
 				  valueInputOption: 'RAW',
 				  insertDataOption: 'INSERT_ROWS',
 				  resource: {
